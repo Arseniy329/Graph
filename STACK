@@ -1,0 +1,26 @@
+text = input()
+stack = []
+okey = True
+
+for i in text:
+    if i in '({[':
+        stack.append(i)
+    elif len(stack) == 0:
+        okey = False
+        break
+        
+    elif i in ')}]':
+        open_bracked = stack.pop()
+        if open_bracked == '(' and i == ')':
+            continue
+        if open_bracked == '{' and i == '}':
+            continue
+        if open_bracked == '[' and i == ']':
+            continue
+        okey = False
+        break
+    
+if okey and len(stack)==0:
+    print("YES")
+else:
+    print('NO')
